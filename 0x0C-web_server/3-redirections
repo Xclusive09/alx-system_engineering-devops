@@ -1,0 +1,27 @@
+#!/bin/bash
+sudo apt update
+sudo apt install nginx
+
+
+sudo bash -c 'cat > /etc/nginx/sites-available/redirect_me.conf << EOF
+server {
+    listen 80;
+    server_name _;
+    location /redirect_me {
+        return 301 https://example.com/;
+    }
+}
+EOF'
+This will create a configuration file called redirect_me.conf in the /etc/nginx/sites-available directory with a server block that listens on port 80, matches requests to /redirect_me and redirects them to https://example.com/ with a "301 Moved Permanently" status.
+
+
+
+#Enable the configuration file
+
+sudo ln -s /etc/nginx/sites-available/redirect_me.conf /etc/nginx/sites-enabled/
+
+
+#Test and reload the server
+
+sudo nginx -t
+sudo systemctl reload nginx
