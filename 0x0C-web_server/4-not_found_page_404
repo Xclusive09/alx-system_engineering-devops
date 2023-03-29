@@ -1,27 +1,40 @@
-#!/bin/bash
-sudo apt update
-sudo apt install nginx
+#!/usr/bin/env bash
+# Installs, configures, and starts the server
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo chmod -R 755 /var/www
+echo 'Hello World!' > /var/www/html/index.html
 
-
-sudo bash -c 'cat > /etc/nginx/sites-available/redirect_me.conf << EOF
-server {
-    listen 80;
-    server_name _;
-    location /redirect_me {
-        return 301 https://example.com/;
+SERVER_CONFIG=\
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm  index.nginx-debian.html;
+	server_name _;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+    error_page 404 /404.html;
+    location /404.html {
+        internal;
     }
-}
-EOF'
-This will create a configuration file called redirect_me.conf in the /etc/nginx/sites-available directory with a server block that listens on port 80, matches requests to /redirect_me and redirects them to https://example.com/ with a "301 Moved Permanently" status.
 
+	if (\$request_filename ~ redirect_me){
+		rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4;
+	}
+}"
 
+# bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
 
-#Enable the configuration file
+# Create the custom 404 HTML file
+sudo echo "Ceci n'est pas une page" > /var/www/html/404.html
+sudo echo "$new_config" > /etc/nginx/sites-available/default
 
-sudo ln -s /etc/nginx/sites-available/redirect_me.conf /etc/nginx/sites-enabled/
-
-
-#Test and reload the server
-
-sudo nginx -t
-sudo systemctl reload nginx
+if [ "$(pgrep -c nginx)" -le 0 ]; 
+then
+	service nginx start
+else
+	service nginx restart
+fi
