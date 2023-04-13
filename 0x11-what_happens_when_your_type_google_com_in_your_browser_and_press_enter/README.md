@@ -2,8 +2,8 @@
 
 **Description**
 
-- [0-blog_post](https://github.com/Xclusive09/alx-system_engineering-devops/blob/master/0x11-what_happens_when_your_type_google_com_in_your_browser_and_press_enter/0-blog_post)
+- <a href="https://github.com/Xclusive09/alx-system_engineering-devops/blob/master/0x11-what_happens_when_your_type_google_com_in_your_browser_and_press_enter/0-blog_post">0-blog_post</a>
 
-- [1-what_happen_when_diagram] (https://github.com/Xclusive09/alx-system_engineering-devops/blob/master/0x11-what_happens_when_your_type_google_com_in_your_browser_and_press_enter/1-what_happen_when_diagram)
+- <a href="https://github.com/Xclusive09/alx-system_engineering-devops/blob/master/0x11-what_happens_when_your_type_google_com_in_your_browser_and_press_enter/1-what_happen_when_diagram"> 1-what_happen_when_diagram</a>
 
-- [2-contribution-to_what-happens-when_github_answer] (https://github.com/Xclusive09/alx-system_engineering-devops/blob/master/0x11-what_happens_when_your_type_google_com_in_your_browser_and_press_enter/2-contribution-to_what-happens-when_github_answer)
+- <a href="https://github.com/Xclusive09/alx-system_engineering-devops/blob/master/0x11-what_happens_when_your_type_google_com_in_your_browser_and_press_enter/2-contribution-to_what-happens-when_github_answer"> 2-contribution-to_what-happens-when_github_answer </a>
